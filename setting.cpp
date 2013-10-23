@@ -29,6 +29,11 @@ int Setting::get() {
   return _value;
 }
 
+void Setting::set(const int value) {
+  _value = value;
+  apply();
+}
+
 int Setting::read() {
   return EEPROM.read(_address + _offset);
 }

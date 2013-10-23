@@ -16,6 +16,7 @@ public:
   tuning(EEPROM_OFFSET, 0, 0, 255) {
   }
 
+  void set(const int value);
   void apply();
   void write();
   const int band();

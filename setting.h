@@ -14,6 +14,7 @@ public:
   int operator++();
   int operator--();
   int get();
+  void set(const int value);
   int read();
   void write();
   void apply();

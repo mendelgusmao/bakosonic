@@ -1,5 +1,10 @@
 #include "screen.h"
 
+int oldChannel;
+int oldBrightness;
+int oldContrast;
+int oldVertical;
+
 void StandbyScreen::handle(TV &tv, const int key) {
   if (key != KEY_ONOFF) return;
   tv.toggle();
@@ -33,6 +38,11 @@ void MainScreen::handle(TV &tv, const int key) {
     break;
 
   case KEY_SETUP:
+    oldChannel = tv.channel.get();
+    oldBrightness = tv.brightness.get();
+    oldContrast = tv.contrast.get();
+    oldVertical = tv.vertical.get();
+
     Screen::index = SCREEN_TUNING;
     break;	
   }
@@ -42,6 +52,7 @@ void TuningScreen::handle(TV &tv, const int key) {
   switch (key) {
   case KEY_ONOFF:
     tv.channel.write();
+    Screen::index = SCREEN_MAIN;
     break;
 
   case KEY_CHAN_UP:
@@ -72,6 +83,7 @@ void SetupScreen::handle(TV &tv, const int key) {
     tv.brightness.write();
     tv.contrast.write();
     tv.vertical.write();
+    Screen::index = SCREEN_MAIN;
     break;
 
   case KEY_CHAN_UP:
@@ -87,6 +99,11 @@ void SetupScreen::handle(TV &tv, const int key) {
     break;
 
   case KEY_SETUP:
+    tv.channel.set(oldChannel);
+    tv.brightness.set(oldBrightness);
+    tv.contrast.set(oldContrast);
+    tv.vertical.set(oldVertical);
+
     Screen::index = SCREEN_MAIN;
     break;  
   }  

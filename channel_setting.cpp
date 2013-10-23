@@ -9,12 +9,17 @@ void ChannelSetting::readAll() {
   }
 }
 
+void ChannelSetting::set(const int value) {
+  _value = value;
+  apply();
+}
+
 void ChannelSetting::apply() {
   digitalWrite(PIN_DIGIPOT_CS, LOW);
   SPI.transfer(_address + _offset);
   SPI.transfer(_value);
   digitalWrite(PIN_DIGIPOT_CS, HIGH);
-  
+
   tuning.setOffset(get());
   tuning.apply();
 }
