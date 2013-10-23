@@ -4,9 +4,10 @@
 #include <SPI.h>
 #include <EEPROM.h>
 
-Setting::Setting(const int address, const int defaultValue, const int lowerBound, const int upperBound) :
+Setting::Setting(const int address, const int offset, const int lowerBound, const int upperBound) :
 _address(address),
-_value(defaultValue),
+_offset(offset),
+_value(lowerBound),
 _lowerBound(lowerBound),
 _upperBound(upperBound)
 {
@@ -27,17 +28,20 @@ int Setting::get() {
 }
 
 int Setting::read() {
-  return EEPROM.read(_address);
+  return EEPROM.read(_address + _offset);
 }
 
 void Setting::write() {
-  EEPROM.write(_address, _value);
+  EEPROM.write(_address + _offset, _value);
 }
 
 void Setting::apply() {
   digitalWrite(PIN_DIGIPOT_CS, LOW);
-  SPI.transfer(_address);
+  SPI.transfer(_address + _offset);
   SPI.transfer(_value);
   digitalWrite(PIN_DIGIPOT_CS, HIGH);
 }
 
+void Setting::setOffset(const int offset) {
+  _offset = offset;
+}

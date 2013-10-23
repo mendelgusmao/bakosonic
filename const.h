@@ -32,6 +32,6 @@ const int ADDRESS_CONTRAST = 3;
 const int ADDRESS_VERTICAL = 4;
 const int ADDRESS_BAND = 5;
 
-const int EEPROM_OFFSET = 10;
+const int EEPROM_OFFSET = ADDRESS_BAND + 1;
 
 #endif CONST_H

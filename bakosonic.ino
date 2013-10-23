@@ -26,11 +26,16 @@ void setup() {
 	tv.contrast.read();
 	tv.vertical.read();
 	ChannelSetting::readAll();
+	tv.channel.apply();
+	tv.volume.apply();
+	tv.brightness.apply();
+	tv.contrast.apply();
+	tv.vertical.apply();
 }
 
 void loop() {
   int key = read_key();
-  screens[Screen::index]->handle(tv, key);
+  if (key > 0) screens[Screen::index]->handle(tv, key);
 }
 
 int read_key() {

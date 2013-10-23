@@ -9,11 +9,15 @@ public:
   static int channels[CHAN_CEIL];
   static void readAll();
 
-  ChannelSetting(const int address, const int defaultValue, const int lowerBound, const int upperBound) : 
-  Setting(address, defaultValue, lowerBound, upperBound) {
+  Setting tuning;
+
+  ChannelSetting(const int address, const int offset, const int lowerBound, const int upperBound) : 
+  Setting(address, offset, lowerBound, upperBound),
+  tuning(EEPROM_OFFSET, 0, 0, 255) {
   }
 
   void apply();
+  void write();
   const int band();
 };
 

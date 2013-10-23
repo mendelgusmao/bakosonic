@@ -10,12 +10,20 @@ void ChannelSetting::readAll() {
 }
 
 void ChannelSetting::apply() {
-  int position = ChannelSetting::channels[_value];
-
   digitalWrite(PIN_DIGIPOT_CS, LOW);
-  SPI.transfer(ADDRESS_CHANNEL);
-  SPI.transfer(position);
+  SPI.transfer(_address + _offset);
+  SPI.transfer(_value);
   digitalWrite(PIN_DIGIPOT_CS, HIGH);
+  
+  tuning.setOffset(get());
+  tuning.apply();
+}
+
+void ChannelSetting::write() {
+  EEPROM.write(_address + _offset, _value);
+
+  tuning.setOffset(get());
+  tuning.write();
 }
 
 const int ChannelSetting::band() {
