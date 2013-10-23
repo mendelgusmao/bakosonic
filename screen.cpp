@@ -15,25 +15,21 @@ void MainScreen::handle(TV &tv, const int key) {
   case KEY_CHAN_UP:
     ++tv.channel;
     tv.channel.write();
-    tv.channel.apply();
     break;
 
   case KEY_CHAN_DOWN:
     --tv.channel;
     tv.channel.write();
-    tv.channel.apply();
     break;
 
   case KEY_VOL_UP:
     ++tv.volume;
     tv.volume.write();
-    tv.volume.apply();
     break;
 
   case KEY_VOL_DOWN:
     --tv.volume;
     tv.volume.write();
-    tv.volume.apply();
     break;
 
   case KEY_SETUP:
@@ -50,22 +46,18 @@ void TuningScreen::handle(TV &tv, const int key) {
 
   case KEY_CHAN_UP:
     ++tv.channel;
-    tv.channel.apply();
     break;
 
   case KEY_CHAN_DOWN:
     --tv.channel;
-    tv.channel.apply();
     break;
 
   case KEY_VOL_UP:
     ++tv.channel.tuning;
-    tv.channel.tuning.apply();
     break;
 
   case KEY_VOL_DOWN:
     --tv.channel.tuning;
-    tv.channel.tuning.apply();  
     break;
 
   case KEY_SETUP:

@@ -15,11 +15,13 @@ _upperBound(upperBound)
 
 int Setting::operator++() {
   if (_value == _upperBound) return 0;
+  apply();
   return ++_value;
 }
 
 int Setting::operator--() {
   if (_value == _lowerBound) return 0;
+  apply();
   return --_value;
 }
 
