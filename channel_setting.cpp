@@ -3,6 +3,18 @@
 #include <SPI.h>
 #include <EEPROM.h>
 
+int ChannelSetting::operator++() {
+  if (_value == _upperBound) _value = _lowerBound;
+  apply();
+  return ++_value;
+}
+
+int ChannelSetting::operator--() {
+  if (_value == _lowerBound) _value = _upperBound;
+  apply();
+  return --_value;
+}
+
 void ChannelSetting::readAll() {
   for (int index = CHAN_FLOOR + EEPROM_OFFSET; index <= CHAN_CEIL + EEPROM_OFFSET; index++) {
     ChannelSetting::channels[index] = EEPROM.read(index);
