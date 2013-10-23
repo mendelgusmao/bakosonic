@@ -16,6 +16,8 @@ public:
   tuning(EEPROM_OFFSET, 0, 0, 255) {
   }
 
+  int operator++();
+  int operator--();
   void set(const int value);
   void apply();
   void write();

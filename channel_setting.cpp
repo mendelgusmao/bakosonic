@@ -4,15 +4,25 @@
 #include <EEPROM.h>
 
 int ChannelSetting::operator++() {
-  if (_value == _upperBound) _value = _lowerBound;
+  if (_value == _upperBound) { 
+    _value = _lowerBound;
+  } else {
+    ++_value;
+  }
+
   apply();
-  return ++_value;
+  return _value;
 }
 
 int ChannelSetting::operator--() {
-  if (_value == _lowerBound) _value = _upperBound;
+  if (_value == _lowerBound) { 
+    _value = _upperBound;
+  } else {
+    --_value;
+  }
+
   apply();
-  return --_value;
+  return _value;
 }
 
 void ChannelSetting::readAll() {
