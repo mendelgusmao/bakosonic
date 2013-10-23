@@ -2,6 +2,7 @@
 #include "const.h"
 #include "tv.h"
 #include "screen.h"
+#include "setting.h"
 
 TV tv;
 MainScreen main;

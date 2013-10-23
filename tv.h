@@ -7,8 +7,8 @@
 
 class TV {
 private:
-	bool on;
-	int screen;
+	bool _on;
+	int _screen;
 
 public:
 	ChannelSetting channel;
@@ -18,8 +18,8 @@ public:
 	Setting vertical;
 
 	TV() : 
-		on(false),
-		screen(SCREEN_MAIN),
+		_on(false),
+		_screen(SCREEN_MAIN),
 		channel(ADDRESS_CHANNEL, 2, CHAN_FLOOR, CHAN_CEIL),
 		volume(ADDRESS_VOLUME, 0, 0, 255),
 		brightness(ADDRESS_BRIGHTNESS, 0, 0, 255),

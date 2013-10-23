@@ -3,13 +3,13 @@
 
 class Setting {
 protected:
-	int address;
-	int value;
-	int lowerBound;
-	int upperBound;
+	int _address;
+	int _value;
+	int _lowerBound;
+	int _upperBound;
 
 public:
-	Setting(int address, int defaultValue, int lowerBound, int upperBound);
+	Setting(const int address, const int defaultValue, const int lowerBound, const int upperBound);
 	int operator++();
 	int operator--();
 	int get();

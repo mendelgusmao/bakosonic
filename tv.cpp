@@ -3,10 +3,10 @@
 
 
 void TV::toggle() {
-  digitalWrite(PIN_RELAY, (on = !on) ? HIGH : LOW);
+  digitalWrite(PIN_RELAY, (_on = !_on) ? HIGH : LOW);
 }
 
 bool TV::isOn() {
-  return on;
+  return _on;
 }
 

@@ -3,7 +3,7 @@
 #include <SPI.h>
 
 void ChannelSetting::apply() {
-	int position = ChannelSetting::channels[value];
+	int position = ChannelSetting::channels[_value];
 
   digitalWrite(PIN_DIGIPOT, LOW);
   SPI.transfer(ADDRESS_CHANNEL);
