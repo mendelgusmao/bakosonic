@@ -1,14 +1,21 @@
 #include "const.h"
 #include "channel_setting.h"
 #include <SPI.h>
+#include <EEPROM.h>
+
+void ChannelSetting::readAll() {
+  for (int index = CHAN_FLOOR + EEPROM_OFFSET; index <= CHAN_CEIL + EEPROM_OFFSET; index++) {
+    ChannelSetting::channels[index] = EEPROM.read(index);
+  }
+}
 
 void ChannelSetting::apply() {
   int position = ChannelSetting::channels[_value];
 
-  digitalWrite(PIN_DIGIPOT, LOW);
+  digitalWrite(PIN_DIGIPOT_CS, LOW);
   SPI.transfer(ADDRESS_CHANNEL);
   SPI.transfer(position);
-  digitalWrite(PIN_DIGIPOT, HIGH);
+  digitalWrite(PIN_DIGIPOT_CS, HIGH);
 }
 
 const int ChannelSetting::band() {
@@ -21,5 +28,3 @@ const int ChannelSetting::band() {
 
   return CHAN_BAND_UHF;
 }
-
-

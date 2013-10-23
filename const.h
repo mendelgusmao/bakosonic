@@ -1,29 +1,37 @@
-#define SCREEN_STANDBY 0
-#define SCREEN_MAIN 1
-#define SCREEN_TUNING 2
-#define SCREEN_SETUP 3
+#ifndef CONST_H
+#define CONST_H
 
-#define KEY_ONOFF 0
-#define KEY_CHAN_UP 1
-#define KEY_CHAN_DOWN 2
-#define KEY_VOL_UP 3
-#define KEY_VOL_DOWN 4
-#define KEY_SETUP 5
+const int SCREEN_STANDBY = 0;
+const int SCREEN_MAIN = 1;
+const int SCREEN_TUNING = 2;
+const int SCREEN_SETUP = 3;
 
-#define PIN_RELAY 10
-#define PIN_DIGIPOT 11 // 11 - CS, 12 - SDI
+const int KEY_ONOFF = 0;
+const int KEY_CHAN_UP = 1;
+const int KEY_CHAN_DOWN = 2;
+const int KEY_VOL_UP = 3;
+const int KEY_VOL_DOWN = 4;
+const int KEY_SETUP = 5;
 
-#define CHAN_FLOOR 2
-#define CHAN_CEIL 83
-#define CHAN_BAND_VHF_LOW 0
-#define CHAN_BAND_VHF_HIGH 1
-#define CHAN_BAND_UHF 2
+const int PIN_BAND = 6;
+const int PIN_RELAY = 9;
+const int PIN_DIGIPOT_CS = 10;
+const int PIN_DIGIPOT_SDI = 11;
+const int PIN_DIGIPOT_CLK = 13;
 
-#define ADDRESS_CHANNEL 0
-#define ADDRESS_VOLUME 1
-#define ADDRESS_BRIGHTNESS 2
-#define ADDRESS_CONTRAST 3
-#define ADDRESS_VERTICAL 4
+const int CHAN_FLOOR = 2;
+const int CHAN_CEIL = 83;
+const int CHAN_BAND_VHF_LOW = 0;
+const int CHAN_BAND_VHF_HIGH = 1;
+const int CHAN_BAND_UHF = 2;
 
-#define EEPROM_OFFSET 10
+const int ADDRESS_CHANNEL = 0;
+const int ADDRESS_VOLUME = 1;
+const int ADDRESS_BRIGHTNESS = 2;
+const int ADDRESS_CONTRAST = 3;
+const int ADDRESS_VERTICAL = 4;
+const int ADDRESS_BAND = 5;
 
+const int EEPROM_OFFSET = 10;
+
+#endif CONST_H

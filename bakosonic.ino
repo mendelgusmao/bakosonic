@@ -2,6 +2,9 @@
 #include "tv.h"
 #include "screen.h"
 #include "setting.h"
+#include "channel_setting.h"
+#include <EEPROM.h>
+#include <SPI.h>
 
 TV tv;
 MainScreen main;
@@ -17,6 +20,12 @@ Screen* screens[4] = {
 };
 
 void setup() {
+	tv.channel.read();
+	tv.volume.read();
+	tv.brightness.read();
+	tv.contrast.read();
+	tv.vertical.read();
+	ChannelSetting::readAll();
 }
 
 void loop() {

@@ -35,9 +35,9 @@ void Setting::write() {
 }
 
 void Setting::apply() {
-  digitalWrite(PIN_DIGIPOT, LOW);
+  digitalWrite(PIN_DIGIPOT_CS, LOW);
   SPI.transfer(_address);
   SPI.transfer(_value);
-  digitalWrite(PIN_DIGIPOT, HIGH);
+  digitalWrite(PIN_DIGIPOT_CS, HIGH);
 }
 

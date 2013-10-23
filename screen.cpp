@@ -2,6 +2,7 @@
 
 void StandbyScreen::handle(TV &tv, const int key) {
   if (key == KEY_ONOFF) tv.toggle();
+  Screen::index = SCREEN_MAIN;
 }
 
 void MainScreen::handle(TV &tv, const int key) {
@@ -35,7 +36,7 @@ void MainScreen::handle(TV &tv, const int key) {
     break;
 
   case KEY_SETUP:
-    // change_screen(SCREEN_SETUP1);
+    Screen::index = SCREEN_TUNING;
     break;	
   }
 }
@@ -67,7 +68,7 @@ void TuningScreen::handle(TV &tv, const int key) {
     break;
 
   case KEY_SETUP:
-    // change_screen(SCREEN_SETUP);
+    Screen::index = SCREEN_SETUP;
     break;  
   }
 }
@@ -75,6 +76,9 @@ void TuningScreen::handle(TV &tv, const int key) {
 void SetupScreen::handle(TV &tv, const int key) {
   switch (key) {
   case KEY_ONOFF:
+    tv.brightness.write();
+    tv.contrast.write();
+    tv.volume.write();
     break;
 
   case KEY_CHAN_UP:
@@ -90,7 +94,7 @@ void SetupScreen::handle(TV &tv, const int key) {
     break;
 
   case KEY_SETUP:
-    // change_screen(SCREEN_MAIN);
+    Screen::index = SCREEN_MAIN;
     break;  
   }  
 }
