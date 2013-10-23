@@ -7,29 +7,32 @@
 
 class TV {
 private:
-	bool _on;
-	int _screen;
+  bool _on;
+  int _screen;
 
 public:
-	ChannelSetting channel;
-	Setting volume;
-	Setting brightness;
-	Setting contrast;
-	Setting vertical;
+  ChannelSetting channel;
+  Setting volume;
+  Setting brightness;
+  Setting contrast;
+  Setting vertical;
 
-	TV() : 
-		_on(false),
-		_screen(SCREEN_MAIN),
-		channel(ADDRESS_CHANNEL, 2, CHAN_FLOOR, CHAN_CEIL),
-		volume(ADDRESS_VOLUME, 0, 0, 255),
-		brightness(ADDRESS_BRIGHTNESS, 0, 0, 255),
-		contrast(ADDRESS_CONTRAST, 0, 0, 255),
-		vertical(ADDRESS_VERTICAL, 0, 0, 255)
-	{}
+  TV() : 
+  _on(false),
+  _screen(SCREEN_MAIN),
+  channel(ADDRESS_CHANNEL, 2, CHAN_FLOOR, CHAN_CEIL),
+  volume(ADDRESS_VOLUME, 0, 0, 255),
+  brightness(ADDRESS_BRIGHTNESS, 0, 0, 255),
+  contrast(ADDRESS_CONTRAST, 0, 0, 255),
+  vertical(ADDRESS_VERTICAL, 0, 0, 255)
+  {
+  }
 
-	void toggle();
-	bool isOn();
+  void toggle();
+  bool isOn();
 
 };
 
 #endif // TV_H
+
+

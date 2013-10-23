@@ -15,6 +15,9 @@
 
 #define CHAN_FLOOR 2
 #define CHAN_CEIL 83
+#define CHAN_BAND_VHF_LOW 0
+#define CHAN_BAND_VHF_HIGH 1
+#define CHAN_BAND_UHF 2
 
 #define ADDRESS_CHANNEL 0
 #define ADDRESS_VOLUME 1
@@ -23,3 +26,4 @@
 #define ADDRESS_VERTICAL 4
 
 #define EEPROM_OFFSET 10
+

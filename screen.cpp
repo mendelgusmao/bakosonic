@@ -1,7 +1,7 @@
 #include "screen.h"
 
 void StandbyScreen::handle(TV &tv, const int key) {
-    if (key == KEY_ONOFF) tv.toggle();
+  if (key == KEY_ONOFF) tv.toggle();
 }
 
 void MainScreen::handle(TV &tv, const int key) {
@@ -94,3 +94,5 @@ void SetupScreen::handle(TV &tv, const int key) {
     break;  
   }  
 }
+
+

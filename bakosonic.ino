@@ -1,4 +1,3 @@
-#include <EEPROM.h>
 #include "const.h"
 #include "tv.h"
 #include "screen.h"
@@ -17,7 +16,8 @@ Screen* screens[4] = {
   screens[SCREEN_SETUP] = &setups
 };
 
-void setup() {}
+void setup() {
+}
 
 void loop() {
   int key = read_key();
