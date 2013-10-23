@@ -103,7 +103,6 @@ void SetupScreen::handle(TV &tv, const int key) {
     tv.brightness.set(oldBrightness);
     tv.contrast.set(oldContrast);
     tv.vertical.set(oldVertical);
-
     Screen::index = SCREEN_MAIN;
     break;  
   }  
