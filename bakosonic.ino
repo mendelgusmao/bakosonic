@@ -7,7 +7,7 @@
 #include <EEPROM.h>
 #include <SPI.h>
 
-TV tv;
+TV tv(PIN_RELAY);
 Keyboard kb(PIN_KEYBOARD);
 
 void setup() {

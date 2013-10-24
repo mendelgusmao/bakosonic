@@ -7,6 +7,7 @@
 
 class TV {
 private:
+  int _pinRelay;
   bool _on;
   int _screen;
 
@@ -17,7 +18,8 @@ public:
   Setting contrast;
   Setting vertical;
 
-  TV() : 
+  TV(const int pinRelay) : 
+  _pinRelay(pinRelay),
   _on(false),
   _screen(SCREEN_MAIN),
   channel(ADDRESS_CHANNEL, 2, CHAN_FLOOR, CHAN_CEIL),
