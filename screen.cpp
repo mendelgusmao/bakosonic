@@ -63,7 +63,7 @@ void MainScreen::handle(TV &tv, const int key) {
 void TuningScreen::handle(TV &tv, const int key) {
   switch (key) {
   case KEY_ONOFF:
-    tv.channel.tuning.write();
+    tv.channel.write();
 
     Screen::index = SCREEN_MAIN;
     break;
