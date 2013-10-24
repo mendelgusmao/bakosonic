@@ -11,14 +11,12 @@ void ChannelSetting::readAll() {
 
 int ChannelSetting::operator++() {
   _value = _value == _upperBound ? _lowerBound : _value + 1;
-
   apply();
   return _value;
 }
 
 int ChannelSetting::operator--() {
   _value = _value == _lowerBound ? _upperBound : _value - 1;
-
   apply();
   return _value;
 }
@@ -29,15 +27,15 @@ void ChannelSetting::set(const int value) {
 }
 
 void ChannelSetting::apply() {
-  tuning.set(ChannelSetting::channels[get()]);
+  tuning.set(ChannelSetting::channels[_value]);
   tuning.apply();
 }
 
 void ChannelSetting::write() {
-  EEPROM.write(_address + _offset, _value);
+  EEPROM.write(_address, _value);
 
-  tuning.setOffset(get());
-  tuning.set(ChannelSetting::channels[get()]);
+  tuning.setOffset(_value);
+  ChannelSetting::channels[_value] = tuning.get();
   tuning.write();
 }
 
