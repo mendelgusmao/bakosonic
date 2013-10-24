@@ -63,7 +63,8 @@ void MainScreen::handle(TV &tv, const int key) {
 void TuningScreen::handle(TV &tv, const int key) {
   switch (key) {
   case KEY_ONOFF:
-    tv.channel.write();
+    tv.channel.tuning.write();
+
     Screen::index = SCREEN_MAIN;
     break;
 
@@ -92,9 +93,11 @@ void TuningScreen::handle(TV &tv, const int key) {
 void SetupScreen::handle(TV &tv, const int key) {
   switch (key) {
   case KEY_ONOFF:
+    tv.channel.set(oldChannel);
     tv.brightness.write();
     tv.contrast.write();
     tv.vertical.write();
+
     Screen::index = SCREEN_MAIN;
     break;
 
@@ -115,6 +118,7 @@ void SetupScreen::handle(TV &tv, const int key) {
     tv.brightness.set(oldBrightness);
     tv.contrast.set(oldContrast);
     tv.vertical.set(oldVertical);
+
     Screen::index = SCREEN_MAIN;
     break;  
   }  

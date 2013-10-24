@@ -9,12 +9,12 @@
 TV tv;
 
 void setup() {
+	ChannelSetting::readAll();
 	tv.channel.read();
 	tv.volume.read();
 	tv.brightness.read();
 	tv.contrast.read();
 	tv.vertical.read();
-	ChannelSetting::readAll();
 	tv.channel.apply();
 	tv.volume.apply();
 	tv.brightness.apply();

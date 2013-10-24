@@ -3,32 +3,24 @@
 #include <SPI.h>
 #include <EEPROM.h>
 
-int ChannelSetting::operator++() {
-  if (_value == _upperBound) { 
-    _value = _lowerBound;
-  } else {
-    ++_value;
+void ChannelSetting::readAll() {
+  for (int index = CHAN_FLOOR + EEPROM_OFFSET; index <= CHAN_CEIL + EEPROM_OFFSET; index++) {
+    ChannelSetting::channels[index] = EEPROM.read(index);
   }
+}
+
+int ChannelSetting::operator++() {
+  _value = _value == _upperBound ? _lowerBound : _value + 1;
 
   apply();
   return _value;
 }
 
 int ChannelSetting::operator--() {
-  if (_value == _lowerBound) { 
-    _value = _upperBound;
-  } else {
-    --_value;
-  }
+  _value = _value == _lowerBound ? _upperBound : _value - 1;
 
   apply();
   return _value;
-}
-
-void ChannelSetting::readAll() {
-  for (int index = CHAN_FLOOR + EEPROM_OFFSET; index <= CHAN_CEIL + EEPROM_OFFSET; index++) {
-    ChannelSetting::channels[index] = EEPROM.read(index);
-  }
 }
 
 void ChannelSetting::set(const int value) {
@@ -37,12 +29,7 @@ void ChannelSetting::set(const int value) {
 }
 
 void ChannelSetting::apply() {
-  digitalWrite(PIN_DIGIPOT_CS, LOW);
-  SPI.transfer(_address + _offset);
-  SPI.transfer(_value);
-  digitalWrite(PIN_DIGIPOT_CS, HIGH);
-
-  tuning.setOffset(get());
+  tuning.set(ChannelSetting::channels[get()]);
   tuning.apply();
 }
 
@@ -50,6 +37,7 @@ void ChannelSetting::write() {
   EEPROM.write(_address + _offset, _value);
 
   tuning.setOffset(get());
+  tuning.set(ChannelSetting::channels[get()]);
   tuning.write();
 }
 

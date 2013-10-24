@@ -1,0 +1,15 @@
+000 - Channel
+001 - Volume
+002 - Brightness
+003 - Contrast
+004 - Vertical
+005 - Empty
+006 - Empty
+
+007 - Channel 2 Tuning
+...
+088 - Channel 83 Tuning
+
+089  - Channel 2 Stored
+...
+170 - Channel 83 Stored
