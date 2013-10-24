@@ -1,6 +1,8 @@
 #ifndef CONST_H
 #define CONST_H
 
+const int SCREENS = 4;
+
 const int SCREEN_STANDBY = 0;
 const int SCREEN_MAIN = 1;
 const int SCREEN_TUNING = 2;

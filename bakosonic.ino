@@ -7,17 +7,6 @@
 #include <SPI.h>
 
 TV tv;
-MainScreen main;
-TuningScreen tuning;
-SetupScreen setups;
-StandbyScreen standby;
-
-Screen* screens[4] = {
-  screens[SCREEN_STANDBY] = &standby,
-  screens[SCREEN_MAIN] = &main,
-  screens[SCREEN_TUNING] = &tuning,
-  screens[SCREEN_SETUP] = &setups
-};
 
 void setup() {
 	tv.channel.read();
@@ -35,7 +24,7 @@ void setup() {
 
 void loop() {
   int key = read_key();
-  if (key > 0) screens[Screen::index]->handle(tv, key);
+  if (key > 0) Screen::screens[Screen::index]->handle(tv, key);
 }
 
 int read_key() {

@@ -5,6 +5,18 @@ int oldBrightness;
 int oldContrast;
 int oldVertical;
 
+MainScreen main;
+TuningScreen tuning;
+SetupScreen setups;
+StandbyScreen standby;
+
+Screen* Screen::screens[SCREENS] = {
+  screens[SCREEN_STANDBY] = &standby,
+  screens[SCREEN_MAIN] = &main,
+  screens[SCREEN_TUNING] = &tuning,
+  screens[SCREEN_SETUP] = &setups
+};
+
 void StandbyScreen::handle(TV &tv, const int key) {
   if (key != KEY_ONOFF) return;
   tv.toggle();
