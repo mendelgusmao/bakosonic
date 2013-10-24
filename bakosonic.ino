@@ -3,10 +3,12 @@
 #include "screen.h"
 #include "setting.h"
 #include "channel_setting.h"
+#include "keyboard.h"
 #include <EEPROM.h>
 #include <SPI.h>
 
 TV tv;
+Keyboard kb(PIN_KEYBOARD);
 
 void setup() {
 	ChannelSetting::readAll();
@@ -23,11 +25,6 @@ void setup() {
 }
 
 void loop() {
-  int key = read_key();
+  int key = kb.read();
   if (key > 0) Screen::screens[Screen::index]->handle(tv, key);
 }
-
-int read_key() {
-  return 0;
-}
-

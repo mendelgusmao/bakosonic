@@ -15,8 +15,9 @@ const int KEY_VOL_UP = 3;
 const int KEY_VOL_DOWN = 4;
 const int KEY_SETUP = 5;
 
+const int PIN_RELAY = 2;
+const int PIN_KEYBOARD = 3;
 const int PIN_BAND = 6;
-const int PIN_RELAY = 9;
 const int PIN_DIGIPOT_CS = 10;
 const int PIN_DIGIPOT_SDI = 11;
 const int PIN_DIGIPOT_CLK = 13;
